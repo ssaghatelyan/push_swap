@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 17:30:52 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 17:45:43 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/02/14 12:17:13 by agaleksa          #+#    #+#             */
+/*   Updated: 2026/03/14 22:18:32 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	simple_sort(t_program *p)
+int ft_print_hex(unsigned int n, char   format)
 {
-	t_node	*min;
-	int		pos;
-	int		size;
+    char    *digits;
+    int     count;
 
-	size = stack_size(p->a);
-	
-	if (size <= 5)
-	{
-		sort_5(p);
-		return ;
-	}
-	else
-	{
-		while (p->a)
-		{
-			min = find_min(p->a);
-			pos = get_position(p->a, min->value);
-			rotate_to_top(p, pos);
-			pb(p);
-		}
-	}
-	while (p->b)
-		pa(p);
+    if (format == 'x')
+        digits = "0123456789abcdef";
+    if (format == 'X')
+        digits = "0123456789ABCDEF";
+    count = 0;
+    if (n >= 16)
+        count += ft_print_hex(n / 16, format);
+    ft_putchar_fd(digits[n % 16], 2);
+    count++;
+    return (count);
 }

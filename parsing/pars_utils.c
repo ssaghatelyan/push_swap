@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:46 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/03 15:31:14 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/15 17:25:40 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int	is_valid_number(char *str)
 
 	i = 0;
 	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i == '+'])
+			return(0);
 		i++;
+	}
 	if (!str[i])
 		return (0);
 	while (str[i])

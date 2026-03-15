@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 17:38:07 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/08 18:40:35 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/03/13 15:45:09 by agaleksa          #+#    #+#             */
+/*   Updated: 2026/03/15 17:44:20 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,40 @@
 
 int main(int argc, char **argv)
 {
-    t_node *a;
-    t_node *b;
+	t_program	p;
+	double		disorder;
 
-    if (argc < 2)
-        return (0);
+	p.a = NULL;
+	p.b = NULL;
+	p.stats = (t_stats){0};
 
-    a = NULL;
-    b = NULL;
+	if (argc < 2)
+		return (0);
 
-    if (!parse_arguments(argc, argv, &a))
-        return (1);
+	parse_flags(argc, argv, &p.flags);
+	parse_arguments(argc, argv, &p.a, p.flags.start);
 
-    if (is_sorted(a))
-    {
-        free_stack(&a);
-        return (0);
-    }
+	if (is_sorted(p.a))
+	{
+		if (&p.flags.bench)
+			free_stack(&p.a);
+		return (0);
+	}
 
-    index_stack(a);
+	disorder = compute_disorder(p.a);
+	index_stack(p.a);
 
-    simple_sort(&a, &b);
+	if (p.flags.algo == SIMPLE)
+		simple_sort(&p);
+	else if (p.flags.algo == MEDIUM)
+		medium_sort(&p);
+	else if (p.flags.algo == COMPLEX)
+		complex_sort(&p);
+	else
+		adaptive_sort(&p, disorder);
+	if (p.flags.bench)
+		print_bench(&p, disorder);
 
-    free_stack(&a);
+	free_stack(&p.a);
     return (0);
 }

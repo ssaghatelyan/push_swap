@@ -1,40 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   sort_5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 17:30:52 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 17:45:43 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/03/13 23:51:28 by agaleksa          #+#    #+#             */
+/*   Updated: 2026/03/14 22:33:17 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	simple_sort(t_program *p)
+static void	push_min_to_b(t_program *p)
 {
 	t_node	*min;
 	int		pos;
-	int		size;
+
+	min = find_min(p->a);
+	pos = get_position(p->a, min->value);
+	rotate_to_top(p, pos);
+	pb(p);
+}
+
+void	sort_5(t_program *p)
+{
+	int	size;
 
 	size = stack_size(p->a);
-	
-	if (size <= 5)
+
+	if (size == 2)
+		sort_2(p);
+	else if (size == 3)
+		sort_3(p);
+	else if (size == 4)
 	{
-		sort_5(p);
-		return ;
-	}
-	else
-	{
-		while (p->a)
-		{
-			min = find_min(p->a);
-			pos = get_position(p->a, min->value);
-			rotate_to_top(p, pos);
-			pb(p);
-		}
-	}
-	while (p->b)
+		push_min_to_b(p);
+		sort_3(p);
 		pa(p);
+	}
+	else if (size == 5)
+	{
+		push_min_to_b(p);
+		push_min_to_b(p);
+		sort_3(p);
+		pa(p);
+		pa(p);
+	}
 }

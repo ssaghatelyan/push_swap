@@ -6,26 +6,26 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/08 17:27:02 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/08 17:29:57 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/14 22:32:21 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rotate_to_top(t_node **a, int pos)
+void    rotate_to_top(t_program *p, int pos)
 {
     int size;
     
-    size = stack_size(*a);
+    size = stack_size(p->a);
     if(pos <= size / 2)
     {
         while (pos--)
-            ra(a);
+            ra(p);
     }
     else
     {
         pos = size - pos;
         while (pos--)
-            rra(a);
+            rra(p);
     }
 }

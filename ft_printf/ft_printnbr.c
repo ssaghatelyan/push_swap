@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 17:30:52 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 17:45:43 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/02/14 12:01:18 by agaleksa          #+#    #+#             */
+/*   Updated: 2026/03/14 22:19:55 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-void	simple_sort(t_program *p)
+int ft_printnbr(int n)
 {
-	t_node	*min;
-	int		pos;
-	int		size;
+    long    nb;
+    int     count;
 
-	size = stack_size(p->a);
-	
-	if (size <= 5)
-	{
-		sort_5(p);
-		return ;
-	}
-	else
-	{
-		while (p->a)
-		{
-			min = find_min(p->a);
-			pos = get_position(p->a, min->value);
-			rotate_to_top(p, pos);
-			pb(p);
-		}
-	}
-	while (p->b)
-		pa(p);
+    nb = n;
+    count = 0;
+    if (nb < 0)
+    {
+        ft_putchar_fd('-', 2);
+        count++;
+        nb = -nb;
+    }
+    if (nb >= 10)
+        count += ft_printnbr(nb / 10);
+    ft_putchar_fd((nb % 10) + '0', 2);
+    count++;
+    return (count);
 }

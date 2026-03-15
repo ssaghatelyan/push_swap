@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/12 18:28:34 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/12 18:39:14 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/13 23:07:04 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ double	compute_disorder(t_node *a)
     i = a;
     while(i)
     {
-        j = i->next
-        ;
+        j = i->next;
         while(j)
         {
             total++;
-            if(a->value > j->value)
+            if(i->value > j->value)
                 mistakes++;
             j = j->next;
         }

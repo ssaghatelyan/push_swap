@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:54 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/08 18:20:56 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/13 22:06:44 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,20 @@ void	error_exit(t_node **a)
 	exit(1);
 }
 
-int parse_arguments(int argc, char **argv, t_node **a)
+int parse_arguments(int argc, char **argv, t_node **a, int start)
 {
-    int     i;
-    int     value;
-    t_node  *new;
+    int i;
+    int value;
+    t_node *new;
 
-    i = 1;
+    i = start;
     while (i < argc)
     {
+        if (is_flag(argv[i]))
+        {
+            i++;
+            continue;
+        }
         if (!is_valid_number(argv[i]))
             error_exit(a);
         value = ft_atoi_safe(argv[i], a);

@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   simple_sort.c                                      :+:      :+:    :+:   */
+/*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/08 17:30:52 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 17:45:43 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/03/14 22:24:47 by agaleksa          #+#    #+#             */
+/*   Updated: 2026/03/14 22:35:55 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "push_swap.h"
 
-void	simple_sort(t_program *p)
+void adaptive_sort(t_program *p, double disorder)
 {
-	t_node	*min;
-	int		pos;
-	int		size;
-
-	size = stack_size(p->a);
-	
-	if (size <= 5)
-	{
-		sort_5(p);
-		return ;
-	}
-	else
-	{
-		while (p->a)
-		{
-			min = find_min(p->a);
-			pos = get_position(p->a, min->value);
-			rotate_to_top(p, pos);
-			pb(p);
-		}
-	}
-	while (p->b)
-		pa(p);
+    if (disorder < 0.1)
+        simple_sort(p);
+    else if (disorder < 0.3)
+        medium_sort(p);
+    else
+        complex_sort(p);
 }
