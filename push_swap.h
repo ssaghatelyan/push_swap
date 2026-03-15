@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 12:12:09 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/14 22:32:54 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/15 20:18:03 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,22 @@ typedef struct s_stats
 	int				rrr;
 }					t_stats;
 
-typedef enum e_algo
-{
-	SIMPLE,
-	MEDIUM,
-	COMPLEX,
-	ADAPTIVE
-}	t_algo;
+// typedef enum e_algo
+// {
+// 	SIMPLE,
+// 	MEDIUM,
+// 	COMPLEX,
+// 	ADAPTIVE
+// }	t_algo;
 
 typedef struct s_flags
 {
-	t_algo			algo;
+	// t_algo			algo;
 	int				bench;
+	int				SIMPLE;
+	int				MEDIUM;
+	int				COMPLEX;
+	int				ADAPTIVE;
 	int				start;
 }	t_flags;
 
