@@ -43,12 +43,60 @@ void	assign_index_from_stack(t_node *stack)
 	}
 }
 
+// void	medium_sort(t_program *p)
+// {
+// 	int		size;
+// 	int		chunk;
+// 	int		i;
+// 	int		j;
+// 	t_node	*tmp;
+// 	t_node	*max;
+
+// 	size = stack_size(p->a);
+// 	chunk = (int)sqrt((double)size);
+// 	assign_index_from_stack(p->a);
+
+// 	if (size <= 5)
+// 	{
+// 		sort_5(p);
+// 		return ;
+// 	}
+	
+// 	i = 0;
+// 	while (i < size)
+// 	{
+// 		j = 0;
+// 		while (j < size)
+// 		{
+// 			if (p->a->index >= i && p->a->index < i + chunk)
+// 				pb(p);
+// 			else
+// 				ra(p);
+// 			j++;
+// 		}
+// 		i += chunk;
+// 	}
+// 	while (p->b)
+// 	{
+// 		max = p->b;
+// 		tmp = p->b;
+// 		while (tmp)
+// 		{
+// 			if (tmp->index > max->index)
+// 				max = tmp;
+// 			tmp = tmp->next;
+// 		}
+// 		while (p->b->index != max->index)
+// 			ra(p);
+// 		pa(p);
+// 	}
+// }
+
 void	medium_sort(t_program *p)
 {
 	int		size;
 	int		chunk;
 	int		i;
-	int		j;
 	t_node	*tmp;
 	t_node	*max;
 
@@ -56,17 +104,30 @@ void	medium_sort(t_program *p)
 	chunk = (int)sqrt((double)size);
 	assign_index_from_stack(p->a);
 
+	if (size <= 5)
+	{
+		sort_5(p);
+		return ;
+	}
+
 	i = 0;
 	while (i < size)
 	{
-		j = 0;
-		while (j < size)
+		while (p->a)
 		{
-			if (p->a->index >= i && p->a->index < i + chunk)
-				pb(p);
-			else
-				ra(p);
-			j++;
+    		if (p->a->index <= i)
+			{
+   		    	pb(p);
+        		rb(p);
+       		 i++;
+   			}
+    		else if (p->a->index <= i + chunk)
+    		{
+        		pb(p);
+        		i++;
+    		}
+    		else
+        		ra(p);
 		}
 		i += chunk;
 	}
@@ -81,7 +142,7 @@ void	medium_sort(t_program *p)
 			tmp = tmp->next;
 		}
 		while (p->b->index != max->index)
-			ra(p);
+			rb(p);
 		pa(p);
 	}
 }
