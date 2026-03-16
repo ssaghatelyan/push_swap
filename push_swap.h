@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 12:12:09 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 20:18:03 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:10:54 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ typedef struct s_program
 /* ===================== FLAGS ===================== */
 
 int					is_flag(char *arg);
-void				parse_flags(int argc, char **argv, t_flags *flags);
+void				parse_flags(int argc, char **argv, t_program *p);
 
 /* ===================== PARSING ===================== */
 
-int					parse_arguments(int argc, char **argv, t_node **a, int start);
+int					parse_arguments(int argc, char **argv, t_program *p, int start);
 int					is_valid_number(char *str);
 int					has_duplicates(t_node *a);
 
@@ -97,7 +97,7 @@ t_node				*new_node(int value);
 void				add_back(t_node **stack, t_node *new);
 int					stack_size(t_node *stack);
 void				free_stack(t_node **stack);
-int					ft_atoi_safe(char *str, t_node **a);
+int					ft_atoi_safe(char *str, t_program *p);
 
 /* ===================== OPERATIONS ===================== */
 
@@ -137,6 +137,6 @@ void				adaptive_sort(t_program *p, double disorder);
 
 /* ===================== ERROR ===================== */
 
-void				error_exit(t_node **a);
+void				error_exit(t_program *p);
 
 #endif

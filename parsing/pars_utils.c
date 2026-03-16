@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:46 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 17:25:40 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:12:07 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-int	ft_atoi_safe(char *str, t_node **a)
+int	ft_atoi_safe(char *str, t_program *p)
 {
 	long	result;
 	int		singn;
@@ -53,7 +53,7 @@ int	ft_atoi_safe(char *str, t_node **a)
 	{
 		result = result * 10 + (str[i] - '0');
 		if ((result * singn) > INT_MAX || (result * singn) < INT_MIN)
-			error_exit(a);
+			error_exit(p);
 		i++;
 	}
 	return ((int)(result)*singn);

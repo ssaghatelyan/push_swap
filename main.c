@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 15:45:09 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 21:09:05 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/16 10:06:32 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 
-	parse_flags(argc, argv, &p.flags);
-	parse_arguments(argc, argv, &p.a, p.flags.start);
+	parse_flags(argc, argv, &p);
+	parse_arguments(argc, argv, &p, p.flags.start);
 
 	if (is_sorted(p.a))
 	{
-		if (!(&p.flags.bench))
+		if (!(p.flags.bench == 1))
 			free_stack(&p.a);
 		else
 			print_bench(&p, 0);
