@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/14 22:24:47 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 18:33:52 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:08:29 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	adaptive_sort(t_program *p, double disorder)
 {
-	if (disorder < 0.2)
+	int	size;
+
+	size = stack_size(p->a);
+	(void)disorder;
+	if (size <= 5)
 		simple_sort(p);
-	else if (disorder < 0.5)
-		medium_sort(p);
 	else
-		complex_sort(p);
+		medium_sort(p);
 }

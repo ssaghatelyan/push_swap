@@ -4,6 +4,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I.
 
 SRC = main.c \
+algorithms/find_max.c \
 algorithms/adaptive_sort.c \
 algorithms/complex_sort.c \
 algorithms/medium_sort.c \
@@ -38,7 +39,7 @@ $(PRINTF):
 	make -C ft_printf
 
 $(NAME): $(OBJ) $(PRINTF)
-	$(CC) $(CFLAGS) $(OBJ) $(PRINTF) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(PRINTF) -lm -o $(NAME)
 
 %.o: %.c push_swap.h
 	$(CC) $(CFLAGS) -c $< -o $@

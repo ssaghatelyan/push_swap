@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   pars_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:46 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 18:34:59 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:14:16 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_valid_number(char *str)
+int	is_valid_number(char *str, t_program *p)
 {
 	int	i;
 
+	(void)p;
 	i = 0;
+	if (!str || !str[0])
+		return (0);
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '+')
-			return (0);
 		i++;
-	}
 	if (!str[i])
 		return (0);
 	while (str[i])
@@ -34,29 +33,33 @@ int	is_valid_number(char *str)
 	return (1);
 }
 
-int	ft_atoi_safe(char *str, t_program *a)
+int	ft_atoi_safe(const char *str, t_program *p)
 {
-	long	result;
-	int		singn;
-	int		i;
+	long	num;
+	int		sign;
 
-	result = 0;
-	singn = 1;
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
+	num = 0;
+	sign = 1;
+	if (!str || !*str)
+		error_exit(p);
+	if (*str == '-' || *str == '+')
 	{
-		if (str[i] == '-')
-			singn = -1;
-		i++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	while (str[i])
+	if (!*str)
+		error_exit(p);
+	while (*str)
 	{
-		result = result * 10 + (str[i] - '0');
-		if ((result * singn) > INT_MAX || (result * singn) < INT_MIN)
-			error_exit(a);
-		i++;
+		if (*str < '0' || *str > '9')
+			error_exit(p);
+		num = num * 10 + (*str - '0');
+		if (num * sign > INT_MAX || num * sign < INT_MIN)
+			error_exit(p);
+		str++;
 	}
-	return ((int)(result)*singn);
+	return ((int)(num * sign));
 }
 
 int	has_duplicates(t_node *a)

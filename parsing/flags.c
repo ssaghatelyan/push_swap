@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 15:37:03 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 18:56:40 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:12:28 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,7 @@ static int	no_algo_selected(t_program *p)
 static void	handle_flag(char *arg, t_program *p)
 {
 	if (!ft_strcmp(arg, "--bench"))
-	{
-		if (!p->flags.bench)
-			p->flags.bench = 1;
-		else
-			error_exit(p);
-	}
+		p->flags.bench = 1;
 	else if (!ft_strcmp(arg, "--simple") && no_algo_selected(p))
 		p->flags.simple = 1;
 	else if (!ft_strcmp(arg, "--medium") && no_algo_selected(p))
@@ -69,6 +64,11 @@ void	parse_flags(int argc, char **argv, t_program *p)
 	{
 		if (is_flag(argv[i]))
 			handle_flag(argv[i], p);
+		else
+		{
+			p->flags.start = i;
+			break ;
+		}
 		i++;
 	}
 }

@@ -3,145 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   medium_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssaghate <marvin@student.42.fr>              +#+  +:+
-	+#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/14 22:36:58 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/15 14:58:42 by ssaghate           ###   ########.fr       */
+/*   Created: 2026/03/19 12:09:51 by ssaghate          #+#    #+#             */
+/*   Updated: 2026/03/19 15:24:56 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	assign_index_from_stack(t_node *stack)
+static int	get_chunk_size(int size)
 {
-	t_node	*tmp;
-	t_node	*cur;
-	t_node	*min;
-	int		idx;
-	int		size;
+	if (size <= 100)
+		return (15);
+	return (30);
+}
 
-	size = stack_size(stack);
-	tmp = stack;
-	while (tmp)
+static void	move_max_to_top(t_program *p, t_node *max)
+{
+	int	pos;
+	int	size;
+
+	pos = get_position(p->b, max->value);
+	size = stack_size(p->b);
+	if (pos <= size / 2)
+		while (pos-- > 0)
+			rb(p);
+	else
+		while (pos++ < size)
+			rrb(p);
+}
+
+static void	push_chunks(t_program *p, int chunk)
+{
+	int	i;
+
+	i = 0;
+	while (p->a)
 	{
-		tmp->index = -1;
-		tmp = tmp->next;
-	}
-	idx = 0;
-	while (idx < size)
-	{
-		min = NULL;
-		cur = stack;
-		while (cur)
+		if (p->a->index <= i)
 		{
-			if (cur->index == -1 && (!min || cur->value < min->value))
-				min = cur;
-			cur = cur->next;
+			pb(p);
+			rb(p);
+			i++;
 		}
-		if (min)
-			min->index = idx++;
+		else if (p->a->index <= i + chunk)
+		{
+			pb(p);
+			i++;
+		}
+		else
+			ra(p);
 	}
 }
 
-// void	medium_sort(t_program *p)
-// {
-// 	int		size;
-// 	int		chunk;
-// 	int		i;
-// 	int		j;
-// 	t_node	*tmp;
-// 	t_node	*max;
+static void	push_back_sorted(t_program *p)
+{
+	t_node	*max;
 
-// 	size = stack_size(p->a);
-// 	chunk = (int)sqrt((double)size);
-// 	assign_index_from_stack(p->a);
-
-// 	if (size <= 5)
-// 	{
-// 		sort_5(p);
-// 		return ;
-// 	}
-
-// 	i = 0;
-// 	while (i < size)
-// 	{
-// 		j = 0;
-// 		while (j < size)
-// 		{
-// 			if (p->a->index >= i && p->a->index < i + chunk)
-// 				pb(p);
-// 			else
-// 				ra(p);
-// 			j++;
-// 		}
-// 		i += chunk;
-// 	}
-// 	while (p->b)
-// 	{
-// 		max = p->b;
-// 		tmp = p->b;
-// 		while (tmp)
-// 		{
-// 			if (tmp->index > max->index)
-// 				max = tmp;
-// 			tmp = tmp->next;
-// 		}
-// 		while (p->b->index != max->index)
-// 			ra(p);
-// 		pa(p);
-// 	}
-// }
+	while (p->b)
+	{
+		max = find_max(p->b);
+		move_max_to_top(p, max);
+		pa(p);
+	}
+}
 
 void	medium_sort(t_program *p)
 {
-	int		size;
-	int		chunk;
-	int		i;
-	t_node	*tmp;
-	t_node	*max;
+	int	size;
+	int	chunk;
 
 	size = stack_size(p->a);
-	chunk = (int)sqrt((double)size);
-	assign_index_from_stack(p->a);
 	if (size <= 5)
 	{
 		sort_5(p);
 		return ;
 	}
-	i = 0;
-	while (i < size)
-	{
-		while (p->a)
-		{
-			if (p->a->index <= i)
-			{
-				pb(p);
-				rb(p);
-				i++;
-			}
-			else if (p->a->index <= i + chunk)
-			{
-				pb(p);
-				i++;
-			}
-			else
-				ra(p);
-		}
-		i += chunk;
-	}
-	while (p->b)
-	{
-		max = p->b;
-		tmp = p->b;
-		while (tmp)
-		{
-			if (tmp->index > max->index)
-				max = tmp;
-			tmp = tmp->next;
-		}
-		while (p->b->index != max->index)
-			rb(p);
-		pa(p);
-	}
+	index_stack(p->a);
+	chunk = get_chunk_size(size);
+	push_chunks(p, chunk);
+	push_back_sorted(p);
 }

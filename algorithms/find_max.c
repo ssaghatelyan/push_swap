@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   opr_rotate.c                                       :+:      :+:    :+:   */
+/*   assign_index_from_stack.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/02 16:04:21 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/19 14:19:00 by ssaghate         ###   ########.fr       */
+/*   Created: 2026/03/19 12:10:14 by ssaghate          #+#    #+#             */
+/*   Updated: 2026/03/19 15:26:53 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(t_program *p)
+t_node	*find_max(t_node *b)
 {
-	rotate_nodes(&(p->a));
-	p->stats.ra++;
-	write(1, "ra\n", 3);
-}
+	t_node	*max;
 
-void	rb(t_program *p)
-{
-	rotate_nodes(&(p->b));
-	p->stats.rb++;
-	write(1, "rb\n", 3);
-}
-
-void	rr(t_program *p)
-{
-	rotate_nodes(&(p->a));
-	rotate_nodes(&(p->b));
-	p->stats.rr++;
-	write(1, "rr\n", 3);
+	max = b;
+	while (b)
+	{
+		if (b->index > max->index)
+			max = b;
+		b = b->next;
+	}
+	return (max);
 }

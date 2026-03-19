@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opr_swap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:25 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 18:50:36 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 14:19:07 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@ void	sa(t_program *p)
 {
 	swap_nodes(&(p->a));
 	p->stats.sa++;
-	if (!p->flags.bench)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_program *p)
 {
 	swap_nodes(&(p->b));
 	p->stats.sb++;
-	if (!p->flags.bench)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_program *p)
@@ -33,6 +31,5 @@ void	ss(t_program *p)
 	swap_nodes(&(p->a));
 	swap_nodes(&(p->b));
 	p->stats.ss++;
-	if (!p->flags.bench)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_bench.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 18:05:32 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 19:18:00 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 15:43:47 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,12 @@ void	get_strategy(t_program *p, double disorder, char **strategy,
 		get_strategy_adaptive(disorder, strategy, complexity);
 }
 
-static void	print_ops(t_stats *s)
+static void	print_ops(t_program *p)
 {
-	ft_printf("[bench] total_ops: %d\n", total_operations((t_program *)s));
+	t_stats	*s;
+
+	s = &p->stats;
+	ft_printf("[bench] total_ops: %d\n", total_operations(p));
 	ft_printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", s->sa, s->sb,
 		s->ss, s->pa, s->pb);
 	ft_printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", s->ra,
@@ -69,18 +72,16 @@ static void	print_ops(t_stats *s)
 
 void	print_bench(t_program *p, double disorder)
 {
-	t_stats	*s;
 	char	*strategy;
 	char	*complexity;
 	int		whole;
 	int		frac;
 
-	s = &p->stats;
 	get_strategy(p, disorder, &strategy, &complexity);
 	disorder *= 100;
 	whole = (int)disorder;
 	frac = (int)((disorder - whole) * 100);
 	ft_printf("[bench] disorder: %d.%d%%\n", whole, frac);
 	ft_printf("[bench] strategy: %s / %s\n", strategy, complexity);
-	print_ops(s);
+	print_ops(p);
 }

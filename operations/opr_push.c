@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opr_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:07 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/18 18:34:34 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/19 14:18:38 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ void	pa(t_program *p)
 {
 	push_nodes(&(p->b), &(p->a));
 	p->stats.pa++;
-	if (!p->flags.bench)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_program *p)
 {
 	push_nodes(&(p->a), &(p->b));
 	p->stats.pb++;
-	if (!p->flags.bench)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
