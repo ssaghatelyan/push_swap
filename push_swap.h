@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 12:12:09 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/19 15:27:23 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:38:54 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct s_program
 
 int					is_flag(char *arg);
 void				parse_flags(int argc, char **argv, t_program *p);
-int					parse_arguments(int argc, char **argv, t_program *p,
+void				parse_arguments(int argc, char **argv, t_program *p,
 						int start);
 int					is_valid_number(char *str, t_program *p);
 int					has_duplicates(t_node *a);

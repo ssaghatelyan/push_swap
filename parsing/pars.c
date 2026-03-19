@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 16:24:02 by ssaghate          #+#    #+#             */
-/*   Updated: 2026/03/19 16:16:26 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:20:14 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	free_split(char **arr)
 	free(arr);
 }
 
-int	parse_arguments(int argc, char **argv, t_program *p, int start)
+void	parse_arguments(int argc, char **argv, t_program *p, int start)
 {
 	int		i;
 	int		j;
