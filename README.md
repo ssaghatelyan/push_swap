@@ -30,10 +30,14 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 
 ### Compilation
 ```bash
-make        # build push_swap
-make clean  # remove object files
-make fclean # remove object files and binary
-make re     # full rebuild
+make              # build push_swap
+make clean        # remove object files
+make fclean       # remove object files and binary
+make re           # full rebuild
+make bonus        # build checker
+make bonus_clean  # remove object files for checker
+make bonus_fclean # remove object files and binary for checker
+make bonus_re     # full rebuild for checker
 ```
 
 Compiled with `cc -Wall -Wextra -Werror`.
