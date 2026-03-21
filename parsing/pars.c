@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/13 16:24:02 by ssaghate          #+#    #+#             */
-/*   Updated: 2026/03/21 14:44:12 by agaleksa         ###   ########.fr       */
+/*   Created: 2026/03/21 16:11:12 by ssaghate          #+#    #+#             */
+/*   Updated: 2026/03/21 18:20:31 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,40 +35,54 @@ void	free_split(char **arr)
 	free(arr);
 }
 
+static void	process_number(char *str, t_program *p)
+{
+	int	value;
+
+	if (!is_valid_number(str, p))
+		error_exit(p);
+	value = ft_atoi_safe(str, p);
+	add_back(&p->a, new_node(value));
+}
+
+static void	process_argument(char *arg, t_program *p)
+{
+	char	**nums;
+	int		j;
+
+	nums = ft_split(arg, ' ');
+	if (!nums)
+		error_exit(p);
+	j = 0;
+	while (nums[j])
+	{
+		if (is_flag(nums[j]))
+		{
+			handle_flag(nums[j], p);
+			j++;
+			continue;
+		}
+		else
+			process_number(nums[j], p);
+		j++;
+	}
+	free_split(nums);
+}
+
 void	parse_arguments(int argc, char **argv, t_program *p, int start)
 {
-	int		i;
-	int		j;
-	int		value;
-	char	**nums;
+	int	i;
 
 	i = start;
 	while (i < argc)
 	{
 		if (is_flag(argv[i]))
-		{
+		{	
 			i++;
 			continue;
 		}
-		nums = ft_split(argv[i], ' ');
-		if (!nums)
-			error_exit(p);
-		j = 0;
-		while (nums[j])
-		{
-			if (is_flag(nums[j]))
-			{
-				handle_flag(nums[j], p);
-				j++;
-				continue;
-			}
-			if (!is_valid_number(nums[j], p))
-				error_exit(p);
-			value = ft_atoi_safe(nums[j], p);
-			add_back(&p->a, new_node(value));
-			j++;
-		}
-		free_split(nums);
+		else
+			process_argument(argv[i], p);
 		i++;
 	}
 	if (has_duplicates(p->a))

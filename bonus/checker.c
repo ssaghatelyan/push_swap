@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:32:50 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 14:38:25 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:42:52 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	execute_op(char *line, t_program *p)
 {
@@ -48,9 +47,7 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&p, sizeof(p));
 	p.flags.checker_mode = 1;
-
 	parse_arguments(argc, argv, &p, 1);
-
 	line = get_next_line(0);
 	while (line)
 	{

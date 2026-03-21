@@ -6,7 +6,7 @@
 /*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:46 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/19 16:14:16 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:33:23 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	is_valid_number(char *str, t_program *p)
 	if (str[i] == '-' || str[i] == '+')
 		i++;
 	if (!str[i])
+		return (0);
+	if (str[i] == '0' && str[i + 1])
 		return (0);
 	while (str[i])
 	{

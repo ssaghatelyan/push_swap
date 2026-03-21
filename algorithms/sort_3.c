@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/11 16:37:35 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 14:10:23 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:44:31 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	sort_3(t_program *p)
 {
-	int	a = p->a->value;
-	int	b = p->a->next->value;
-	int	c = p->a->next->next->value;
+	int	a;
+	int	b;
+	int	c;
 
+	a = p->a->value;
+	b = p->a->next->value;
+	c = p->a->next->next->value;
 	if (a > b && b < c && a < c)
 		sa(p);
 	else if (a > b && b > c)
