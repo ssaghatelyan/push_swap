@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_bench.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 18:05:32 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/19 15:43:47 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/21 16:15:19 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void	print_bench(t_program *p, double disorder)
 	ft_printf("[bench] disorder: %d.%d%%\n", whole, frac);
 	ft_printf("[bench] strategy: %s / %s\n", strategy, complexity);
 	print_ops(p);
+	ft_printf("\n");
 }
