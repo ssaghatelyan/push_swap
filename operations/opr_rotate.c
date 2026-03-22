@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:04:21 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 17:58:19 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:40:14 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ra(t_program *p)
 {
 	rotate_nodes(&(p->a));
 	p->stats.ra++;
-	if (!p->flags.bench_mode)
+	if (!p->flags.checker_mode)
 		write(1, "ra\n", 3);
 }
 
@@ -24,7 +24,7 @@ void	rb(t_program *p)
 {
 	rotate_nodes(&(p->b));
 	p->stats.rb++;
-	if (!p->flags.bench_mode)
+	if (!p->flags.checker_mode)
 		write(1, "rb\n", 3);
 }
 
@@ -33,6 +33,6 @@ void	rr(t_program *p)
 	rotate_nodes(&(p->a));
 	rotate_nodes(&(p->b));
 	p->stats.rr++;
-	if (!p->flags.bench_mode)
+	if (!p->flags.checker_mode)
 		write(1, "rr\n", 3);
 }

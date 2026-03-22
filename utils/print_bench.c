@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 18:05:32 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 17:59:28 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:41:48 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,4 @@ void	print_bench(t_program *p, double disorder)
 	ft_printf("[bench] disorder: %d.%d%%\n", whole, frac);
 	ft_printf("[bench] strategy: %s / %s\n", strategy, complexity);
 	print_ops(p);
-	ft_printf("\n");
 }

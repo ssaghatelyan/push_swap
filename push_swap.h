@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
+/*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 12:12:09 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 16:41:07 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:14:39 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_printf/ft_printf.h"
 # include "ft_printf/libft/libft.h"
-# include "get_next_line/get_next_line.h"
+# include "bonus/get_next_line.h"
 # include <limits.h>
 # include <math.h>
 # include <stdbool.h>

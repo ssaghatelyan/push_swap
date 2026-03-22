@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 16:11:12 by ssaghate          #+#    #+#             */
-/*   Updated: 2026/03/21 18:20:31 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:13:55 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	process_argument(char *arg, t_program *p)
 		{
 			handle_flag(nums[j], p);
 			j++;
-			continue;
+			continue ;
 		}
 		else
 			process_number(nums[j], p);
@@ -77,9 +77,9 @@ void	parse_arguments(int argc, char **argv, t_program *p, int start)
 	while (i < argc)
 	{
 		if (is_flag(argv[i]))
-		{	
+		{
 			i++;
-			continue;
+			continue ;
 		}
 		else
 			process_argument(argv[i], p);

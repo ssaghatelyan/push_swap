@@ -30,10 +30,10 @@ utils/get_position.c \
 utils/index_stack.c \
 utils/is_sorted.c \
 utils/rotate_to_top.c \
-get_next_line/get_next_line.c \
-get_next_line/get_next_line_utils.c \
 
 BONUS_SRC = bonus/checker.c \
+bonus/get_next_line.c \
+bonus/get_next_line_utils.c \
 algorithms/find_max.c \
 algorithms/adaptive_sort.c \
 algorithms/complex_sort.c \
@@ -57,9 +57,7 @@ utils/find_min.c \
 utils/get_position.c \
 utils/index_stack.c \
 utils/is_sorted.c \
-utils/rotate_to_top.c \
-get_next_line/get_next_line.c \
-get_next_line/get_next_line_utils.c
+utils/rotate_to_top.c 
 
 OBJ = $(SRC:.c=.o)
 

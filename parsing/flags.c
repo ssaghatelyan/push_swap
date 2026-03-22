@@ -6,7 +6,7 @@
 /*   By: agaleksa <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/13 15:37:03 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/21 13:40:13 by agaleksa         ###   ########.fr       */
+/*   Updated: 2026/03/22 16:47:49 by agaleksa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,14 @@ static int	no_algo_selected(t_program *p)
 		&& !p->flags.adaptive);
 }
 
+static int	no_bench_selected(t_program *p)
+{
+	return (!p->flags.bench_mode);
+}
+
 void	handle_flag(char *arg, t_program *p)
 {
-	if (!ft_strcmp(arg, "--bench"))
+	if (!ft_strcmp(arg, "--bench") && no_bench_selected(p))
 		p->flags.bench_mode = 1;
 	else if (!ft_strcmp(arg, "--simple") && no_algo_selected(p))
 		p->flags.simple = 1;
