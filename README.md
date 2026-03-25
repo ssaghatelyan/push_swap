@@ -10,6 +10,7 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 
 ### Available operations
 
+-- **agaleksa**
 | Operation | Effect                                |
 |-----------|---------------------------------------|
 | `sa`      | Swap the top 2 elements of stack a    |
@@ -29,6 +30,7 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 ## Instructions
 
 ### Compilation
+**agaleksa**
 ```bash
 make        # build push_swap
 make clean  # remove object files
@@ -46,7 +48,7 @@ Compiled with `cc -Wall -Wextra -Werror`.
 ```
 
 ### Optional flags
-
+**agaleksa**
 These flags are non-standard extensions added beyond the base project requirements:
 ```bash
 ./push_swap --simple   3 1 2    # force simple sort  (O(n²))
@@ -57,7 +59,7 @@ These flags are non-standard extensions added beyond the base project requiremen
 ```
 
 ### Checking correctness
-
+**ssaghate**
 Pipe the output into a checker (if available):
 ```bash
 ARG="5 3 1 4 2"
@@ -82,6 +84,7 @@ bash test_push_swap.sh ./push_swap
 ---
 
 ## Algorithms
+**ssaghate**
 
 This project implements four sorting strategies.
 
