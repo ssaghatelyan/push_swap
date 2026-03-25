@@ -10,7 +10,7 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 
 ### Available operations
 
--- **agaleksa**
+**agaleksa**
 | Operation | Effect                                |
 |-----------|---------------------------------------|
 | `sa`      | Swap the top 2 elements of stack a    |
