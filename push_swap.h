@@ -6,7 +6,7 @@
 /*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/23 18:15:48 by ssaghate          #+#    #+#             */
-/*   Updated: 2026/03/23 18:29:39 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/26 17:28:17 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <math.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>

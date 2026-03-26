@@ -6,11 +6,48 @@
 /*   By: ssaghate <ssaghate@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/21 13:32:50 by agaleksa          #+#    #+#             */
-/*   Updated: 2026/03/23 15:59:21 by ssaghate         ###   ########.fr       */
+/*   Updated: 2026/03/26 17:37:19 by ssaghate         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	is_number(const char *s)
+{
+	if (!s || !*s)
+		return (0);
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s)
+		if (*s < '0' || *s++ > '9')
+			return (0);
+	return (1);
+}
+
+static void	check_args(int argc, char **argv, t_program *p)
+{
+	long	num;
+	int		i;
+	int		j;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (!is_number(argv[i]))
+			error_exit(p);
+		num = atol(argv[i]);
+		if (num > INT_MAX || num < INT_MIN)
+			error_exit(p);
+		j = 1;
+		while (j < i)
+		{
+			if (atoi(argv[j]) == (int)num)
+				error_exit(p);
+			j++;
+		}
+		i++;
+	}
+}
 
 static void	execute_op_part2(char *line, t_program *p)
 {
@@ -73,6 +110,9 @@ int	main(int argc, char **argv)
 
 	ft_bzero(&p, sizeof(p));
 	p.flags.checker_mode = 1;
+	if (argc == 1)
+		return (0);
+	check_args(argc, argv, &p);
 	parse_arguments(argc, argv, &p, 1);
 	line = get_next_line(0);
 	while (line)
@@ -87,4 +127,5 @@ int	main(int argc, char **argv)
 		write(1, "KO\n", 3);
 	free_stack(&p.a);
 	free_stack(&p.b);
+	return (0);
 }
