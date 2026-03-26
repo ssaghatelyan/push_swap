@@ -10,7 +10,6 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 
 ### Available operations
 
-**agaleksa**
 | Operation | Effect                                |
 |-----------|---------------------------------------|
 | `sa`      | Swap the top 2 elements of stack a    |
@@ -30,7 +29,6 @@ The program reads a list of integers as arguments, outputs the sequence of opera
 ## Instructions
 
 ### Compilation
-**agaleksa**
 ```bash
 make        # build push_swap
 make clean  # remove object files
@@ -48,7 +46,6 @@ Compiled with `cc -Wall -Wextra -Werror`.
 ```
 
 ### Optional flags
-**agaleksa**
 These flags are non-standard extensions added beyond the base project requirements:
 ```bash
 ./push_swap --simple   3 1 2    # force simple sort  (O(n²))
@@ -59,7 +56,6 @@ These flags are non-standard extensions added beyond the base project requiremen
 ```
 
 ### Checking correctness
-**ssaghate**
 Pipe the output into a checker (if available):
 ```bash
 ARG="5 3 1 4 2"
@@ -84,7 +80,6 @@ bash test_push_swap.sh ./push_swap
 ---
 
 ## Algorithms
-**ssaghate**
 
 This project implements four sorting strategies.
 
@@ -126,6 +121,22 @@ Selects the algorithm based on input size:
 - n > 5 → medium sort
 
 **Justification:** empirical testing showed that medium sort outperforms radix sort for all tested input sizes (up to 500 elements), so disorder-based routing was replaced with a simpler size-based decision. The disorder metric (`compute_disorder`, counting inversions) is still computed and shown in `--bench` output for informational purposes.
+
+---
+# Learners’ Contributions
+
+## agaleksa
+- Implemented basic stack operations (`sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rb`, `rr`, `rra`, `rrb`, `rrr`).  
+- Developed `simple_sort` (O(n²)) and `medium_sort` (O(n√n)) strategies.  
+- Handled memory management and stack utilities (`push_nodes`, `free_stack`, etc.).  
+- Implemented argument parsing, error handling, and flags (`--simple`, `--medium`, `--complex`, `--adaptive`, `--bench`).  
+
+## ssaghate
+- Developed `complex_sort` (O(n log n)) and `adaptive_sort` strategies.  
+- Implemented the `checker` program for verifying `push_swap` outputs.  
+- Added error detection: duplicates, non-numeric arguments, MAXINT overflow, invalid operations.  
+- Reviewed and debugged the entire codebase for logical errors, pointer mismatches, and edge cases.  
+- Wrote detailed README.md sections: Algorithms explanation, Resources, AI usage, and contributions documentation.
 
 ---
 
