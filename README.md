@@ -149,9 +149,18 @@ Selects the algorithm based on input size:
 - peer discussions and code reviews
 - AI tools used only for reviewing code for potential issues
 
-### AI usage
+### AI Usage
 
-Claude (Anthropic) was used during this project for the following tasks:
+During this project, AI tools were used solely to assist with code quality and review. Specifically:
 
-- **Code review:** identifying bugs in `print_bench.c` (incorrect `t_stats*` to `t_program*` cast), `medium_sort.c` (missing `index_stack` call before chunk sorting), and `pars.c` (premature duplicate check inside the argv loop).
-- **Norm compliance:** detecting misaligned variable declarations, commented-out code, and dead declarations in the header.
+- **Code review:** AI helped identify potential bugs and logical issues in the code, including:
+  - `print_bench.c` – incorrect casting from `t_stats*` to `t_program*`.
+  - `medium_sort.c` – missing call to `index_stack` before chunk sorting.
+  - `pars.c` – premature duplicate check inside the argument parsing loop.
+
+- **Norm compliance:** AI assisted in detecting coding style issues, such as:
+  - Misaligned variable declarations.
+  - Commented-out code and dead code.
+  - Formatting inconsistencies in header and source files.
+
+**Note:** AI was used only as a review and guidance tool. All code implementation, logic, and algorithm design were done by the learners.
