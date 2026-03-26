@@ -155,4 +155,3 @@ Claude (Anthropic) was used during this project for the following tasks:
 
 - **Code review:** identifying bugs in `print_bench.c` (incorrect `t_stats*` to `t_program*` cast), `medium_sort.c` (missing `index_stack` call before chunk sorting), and `pars.c` (premature duplicate check inside the argv loop).
 - **Norm compliance:** detecting misaligned variable declarations, commented-out code, and dead declarations in the header.
-- **Test suite:** generating and iteratively fixing a bash test script (`test_push_swap.sh`) covering error handling, correctness verification via operation simulation, operation count thresholds, and edge cases.
